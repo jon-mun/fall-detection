@@ -6,7 +6,7 @@
 
 1. [A Flexible Fall Detection Framework Based on Object Detection and Motion Analysis](https://ieeexplore.ieee.org/document/10066990)
 
-   Motion analysis
+   First detects human objects in the frame using YOLOv5, then tracks the object by using YOLOv5 every frame.
 
 2. ~~[Improved Pedestrian Fall Detection Model Based on YOLOv5](https://ieeexplore.ieee.org/document/9930104)~~
 
