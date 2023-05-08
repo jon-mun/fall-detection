@@ -26,7 +26,10 @@ jonathan.edmund1202@mail.ugm.ac.id}
 \maketitle
 
 \begin{abstract}
-    Paper ini bertujuan untuk membangun sebuah model Convolutional Neural Network (CNN) yang dapat melakukan klasifikasi gambar X-Ray ke dalam dua kelas yaitu Covid dan Bukan Covid. Dataset yang digunakan adalah http://ugm.id/MVDataset. CNN dipilih karena kemampuannya dalam memproses data gambar yang kompleks. Selain itu, dalam laporan juga disertakan link Google Colab untuk mengakses kode program yang digunakan dalam penelitian. Hasil dari penelitian ini adalah model CNN yang dapat mengklasifikasikan gambar X-Ray ke dalam dua kelas yaitu Covid dan Bukan Covid dengan akurasi 94.5\%.
+    Deteksi jatuh merupakan area penelitian yang penting bagi masyarakat
+    lanjut usia karena jatuh dapat menyebabkan cedera serius bahkan kematian.
+    Dalam paper ini, kami mengusulkan sebuah program yang mengimplementasikan
+    sistem deteksi jatuh untuk individu lanjut usia menggunakan teknik tracking.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -34,17 +37,11 @@ COVID-19, Deep Learning, CNN, Detection, Multi-layered CNN, X-Ray
 \end{IEEEkeywords}
 
 \section{Introduction}
-COVID-19 adalah penyakit pernapasan yang juga mirip dengan influenza.Penyakit ini ditandai dengan batuk kering, sakit kepala, kelelahan, dan demam. Sindrom Distres Pernapasan Akut (ARDS) sering menjadi penyebab kegagalan pernapasan. COVID-19 termasuk dalam Middle East Respiratory Syndrome (MERS). COVID-19 disebabkan oleh betakoronavirus SARS-CoV-2, yang mempengaruhi saluran pernapasan bawah dan menimbulkan pneumonia pada manusia. COVID-19 adalah penyakit yang cukup berbahaya bagi kehidupan manusia, sehingga diperlukan tindakan yang tepat untuk mengurangi dampak pandemi ini. Perubahan-perubahan dibutuhkan dalam sistem kesehatan masyarakat, termasuk diagnostik, penelitian, dan lainnya[1].
+Deteksi jatuh merupakan area penelitian penting bagi masyarakat lanjut usia karena jatuh dapat menyebabkan cedera serius bahkan kematian. Dalam paper ini, kami mengusulkan sebuah program yang mengimplementasikan sistem deteksi jatuh untuk individu lanjut usia menggunakan teknik tracking.
 
-Pada saat ini, diagnosis COVID-19 dilakukan dengan menggunakan metode RT-PCR (Reverse Transcription Polymerase Chain Reaction). Metode ini membutuhkan waktu yang cukup lama untuk mendapatkan hasilnya. Selain itu, metode ini juga membutuhkan alat yang cukup mahal. Oleh karena itu, dibutuhkan metode yang lebih cepat dan lebih murah untuk mendeteksi COVID-19. Salah satu metode yang dapat digunakan adalah dengan menggunakan gambar X-Ray. Gambar X-Ray dapat digunakan untuk mendeteksi COVID-19 karena gambar X-Ray dapat menunjukkan adanya pneumonia pada paru-paru[1].
+Selama beberapa dekade terakhir, banyak solusi yang telah dikembangkan untuk mendeteksi insiden jatuh secara otomatis. Teknologi pendeteksi jatuh biasanya mengandalkan tiga jenis perangkat: perangkat yang dapat dikenakan, sensor sekitar, dan kamera penglihatan. Perangkat yang dapat dikenakan bersifat mengganggu, dan perangkat tersebut harus dipasang dalam hubungan yang relatif dekat dengan subjek manusia. Sangat berat bagi para lansia untuk memakai perangkat fisik untuk jangka waktu yang lama. Perangkat berbasis suasana, seperti sensor audio dan getaran, telah digunakan dalam beberapa sistem pendeteksi jatuh. Perangkat berbasis suasana tidak terlalu mengganggu; namun, sifatnya yang kurang visibel membawa beberapa tantangan dalam membedakan jatuhnya benda mati dengan jatuhnya manusia. Pendekatan berbasis penglihatan memberikan solusi non-invasif dan andal untuk deteksi jatuh. Selain itu, kamera video telah banyak dipasang di berbagai bangunan umum dan fasilitas kesehatan untuk tujuan pengawasan. Ini adalah solusi berbiaya rendah untuk sistem deteksi jatuh yang praktis [1].
 
-Deep learning merupakan salah satu teknik dalam machine learning yang menggunakan model neural network dengan banyak layer untuk mempelajari fitur-fitur yang kompleks dari data dan melakukan prediksi atau klasifikasi dengan akurasi yang tinggi. Salah satu jenis neural network yang populer dalam deep learning adalah convolutional neural network (CNN)[1].
-
-Menurut sebuah paper, CNN merupakan jenis neural network yang dirancang khusus untuk mengolah data dengan struktur grid atau matriks, seperti gambar[2]. CNN menggunakan konvolusi untuk mempelajari fitur-fitur pada data dan pooling untuk mengurangi dimensi data, sehingga mampu menangani input yang besar dan kompleks.
-
-CNN banyak digunakan dalam berbagai aplikasi seperti pengenalan wajah, pengenalan tulisan tangan, klasifikasi gambar, dan lain sebagainya. Keunggulan dari CNN adalah kemampuannya untuk mempelajari fitur-fitur dari data secara otomatis, tanpa perlu fitur ekstraksi manual. Hal ini membuat CNN menjadi sangat efektif dan efisien dalam mengolah data yang kompleks.
-
-Pada penelitian ini, CNN digunakan untuk mengklasifikasikan gambar X-Ray ke dalam dua kelas yaitu kelas yang terdiagnosis dengan Covid-19 dan kelas yang normal. Penelitian ini bertujuan untuk mencari model CNN yang optimal untuk deteksi atau diagnosis Covid-19.
+Program yang diusulkan ini menggunakan algoritma deteksi objek \textbf{[fill]} untuk mengidentifikasi dan melacak individu dalam suatu ruangan. Kemudian, program menganalisis gerakan dari individu yang dilacak untuk menentukan apakah terjadi jatuh atau tidak. Tujuan dari program ini adalah memberikan sistem deteksi jatuh yang efektif dan akurat yang dapat dengan mudah diimplementasikan di berbagai lingkungan, termasuk panti jompo dan fasilitas perawatan lanjut usia. Sistem yang diusulkan juga dapat digunakan untuk memberikan peringatan secara real-time kepada pengasuh atau layanan darurat dalam kejadian jatuh. Efektivitas program yang diusulkan dievaluasi menggunakan dataset jatuh di dunia nyata, dan hasilnya menunjukkan bahwa sistem yang diusulkan mencapai tingkat akurasi dan ketahanan yang tinggi dalam mendeteksi jatuh. Paper ini menyajikan kontribusi berharga bagi bidang deteksi jatuh, dan program yang diusulkan berpotensi untuk meningkatkan keselamatan dan kesejahteraan individu lanjut usia.
 
 \section{Methodology}
 
@@ -142,7 +139,7 @@ Untuk penelitian selanjutnya, dapat dilakukan penelitian dengan menggunakan data
 File \textit{Google Colab} atau \textit{Jupyter Notebook} dapat diakses pada tautan berikut: \url{https://colab.research.google.com/drive/1dv7vCyRvFQis5hKDv8Sr2cJx3V8V1lo5}
 
 \begin{thebibliography}{00}
-\bibitem{b1} A. S. N. Zainab, I. Soesanti and D. R. Utomo, "Detection of COVID-19 using CNN's Deep Learning Method: Review," 2022 4th International Conference on Biomedical Engineering (IBIOMED), Yogyakarta, Indonesia, 2022, pp. 59-64, doi: 10.1109/IBIOMED56408.2022.9988533.
+\bibitem{b1} D. Ros and R. Dai, "A Flexible Fall Detection Framework Based on Object Detection and Motion Analysis," 2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC), Bali, Indonesia, 2023, pp. 063-068, doi: 10.1109/ICAIIC57133.2023.10066990.
 \bibitem{b2} Y. LeCun, Y. Bengio and G. Hinton, "Deep learning," in Nature, vol. 521, no. 7553, pp. 436-444, May 2015, doi: 10.1038/nature14539.
 \bibitem{b3} M.E.H. Chowdhury, T. Rahman, A. Khandakar, R. Mazhar, M.A. Kadir, Z.B. Mahbub, K.R. Islam, M.S. Khan, A. Iqbal, N. Al-Emadi, M.B.I. Reaz, M. T. Islam, “Can AI help in screening Viral and COVID-19 pneumonia?” IEEE Access, Vol. 8, 2020, pp. 132665 - 132676. Paper link
 \bibitem{b4} Rahman, T., Khandakar, A., Qiblawey, Y., Tahir, A., Kiranyaz, S., Kashem, S.B.A., Islam, M.T., Maadeed, S.A., Zughaier, S.M., Khan, M.S. and Chowdhury, M.E., 2020. Exploring the Effect of Image Enhancement Techniques on COVID-19 Detection using Chest X-ray Images. Paper Link

@@ -2,7 +2,7 @@
 
 ---
 
-## Papers
+## Papers and Strategies
 
 1. [A Flexible Fall Detection Framework Based on Object Detection and Motion Analysis](https://ieeexplore.ieee.org/document/10066990)
 
@@ -12,9 +12,13 @@
 
    Doesn't use motion analysis, but uses YOLOv5 and a CNN to detect pose.
 
+3. [Fall Detection with Pose Estimation](https://youtu.be/IlsXQPOF9IE)
+
 ## Proposed Strategy
 
-1. Use YOLOv5 to detect people in the frame
+1. Detect people in the frame
+   - YOLOV5
+   - Tensorflow body segmentation / pose detection: https://www.tensorflow.org/js/models
 2. Represent each person with an ellipse bounding box / rotated bounding box. The rotation of the bounding box will determine the orientation of the person.
 3. If the rotation is a certain value, then the person is considered to be falling.
 
