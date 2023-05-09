@@ -14,13 +14,21 @@
 
 3. [Fall Detection with Pose Estimation](https://youtu.be/IlsXQPOF9IE)
 
+4. [also pose estimation calculating hip position](https://www.mdpi.com/2073-8994/12/5/744)
+
 ## Proposed Strategy
 
 1. Detect people in the frame
-   - YOLOV5
-   - Tensorflow body segmentation / pose detection: https://www.tensorflow.org/js/models
-2. Represent each person with an ellipse bounding box / rotated bounding box. The rotation of the bounding box will determine the orientation of the person.
-3. If the rotation is a certain value, then the person is considered to be falling.
+   - ~~YOLOV5~~
+   - Tensorflow pose detection (movenet)
+2. For each estimated pose:
+   - calculate the angle of the head and the hip
+     - calclulate the rotation speed
+     - calculate the angular acceleration
+   - calculate the position of the hip
+     - calculate the difference between y velocity and acceleration
+   - calculate the width and height ratio of the bounding box
+3. If the angular acceleration of the head and the hip is greater than a threshold, and the difference between y velocity and acceleration is greater than a threshold, and the width > height, then the person is falling.
 
 ## Dataset
 
