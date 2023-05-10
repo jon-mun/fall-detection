@@ -44,7 +44,7 @@ Program yang diusulkan ini menggunakan algoritma deteksi manusia serta estimasi 
 \section{Methodology}
 
 \subsection{Proposed Method}
-Pendekatan yang diusulkan pada penelitian ini terdiri dari 4 langkah utama:
+Pendekatan yang diusulkan pada penelitian ini terdiri dari empat langkah utama:
 \begin{enumerate}
     \item Deteksi manusia dan estimasi pose menggunakan model MoveNet.
     \item Menghitung percepatan sudut pada antara hidung dan pinggul.
@@ -53,14 +53,24 @@ Pendekatan yang diusulkan pada penelitian ini terdiri dari 4 langkah utama:
 \end{enumerate}
 
 \subsection{Dataset}
+Dataset video yang digunakan pada simulasi ini berasal dari dua sumber. Sumber pertama adalah Multiple Cameras Fall Dataset yang merupakan dataset yang berisikan 24 skenario yang direkam dengan 8 kamera video IP \cite{dataset1}. Kemudian, digunakan juga dataset \textit{50 Ways to Fall} Dataset yang berisikan 50 skenario jatuh \cite{dataset2}. Sampel dari kedua dataset tersebut dapat dilihat pada Fig 1 dan Fig 2.
 
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.5\textwidth]{figures/sample1.png}}
+\caption{Sampel dari Multiple Cameras Fall Dataset}
+\end{figure}
+
+\begin{figure}[htbp]
+\centerline{\includegraphics[width=0.5\textwidth]{figures/sample2.png}}
+\caption{Sampel dari 50 Ways to Fall Dataset}
+\end{figure}
 
 \subsection{Object Detection and Pose Estimation}
 Tahap pertama dari program yang diusulkan adalah mendeteksi manusia dan mengestimasi pose menggunakan model MoveNet. Movenet merupakan sebuah model Deep Learning yang dirancang untuk mengenali gerakan manusia dan memperkirakan pose tubuh dalam waktu nyata dengan menggunakan kamera. Model ini dikembangkan oleh Google Research pada tahun 2020 dan memanfaatkan arsitektur Convolutional Neural Network (CNN) untuk melakukan deteksi pose tubuh dan estimasi gerakan manusia.
 
 \cite{b2} membahas mengenai rancangan dan arsitektur dari Movenet serta hasil evaluasi performa model pada beberapa dataset. Dalam paper tersebut dijelaskan bahwa Movenet dapat digunakan untuk mengenali gerakan manusia dengan akurasi yang tinggi serta dapat diintegrasikan pada aplikasi yang memerlukan estimasi pose tubuh dan gerakan manusia secara real-time.
 
-Seperti pada Fig 1, sebuah citra atau gambar dari objek manusia akan dijadikan sebagai input untuk model Movenet. Kemudian, model akan menghasilkan output berupa titik-titik yang merepresentasikan pose tubuh manusia. Titik-titik tersebut dapat digunakan untuk mengidentifikasi pose tubuh manusia dan mengenali gerakan manusia. Letak titik-titik yang dapat merepresentasikan pose tubuh dapat dilihat pada Fig 2.
+Seperti pada Fig 3, sebuah citra atau gambar dari objek manusia akan dijadikan sebagai input untuk model Movenet. Kemudian, model akan menghasilkan output berupa titik-titik yang merepresentasikan pose tubuh manusia. Titik-titik tersebut dapat digunakan untuk mengidentifikasi pose tubuh manusia dan mengenali gerakan manusia. Letak titik-titik yang dapat merepresentasikan pose tubuh dapat dilihat pada Fig 4.
 
 \begin{figure}[htbp]
     \centerline{\includegraphics[width=0.5\textwidth]{figures/movenet1.png}}
@@ -96,35 +106,58 @@ Faktor kedua yang digunakan dalam penelitian ini adalah percepatan jatuh pada pu
 \section{Results and Discussion}
 Pada penelitian ini, digunakan perangkat komputasi GPU NVIDIA GeForce GTX 1650. Model MoveNet yang digunakan adalah versi \textit{lightning} karena menghasilkan deteksi serta estimasi pose pada objek manusia dengan baik.
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.5\textwidth]{figures/loss.png}}
-    \caption{Grafik \textit{loss} dari model CNN}
+Batasan yang digunakan pada penelitian ini dapat dilihat pada Table I.
+
+\begin{table}[htbp]
+\caption{Batasan Penelitian}
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Batasan} & \textbf{Nilai} \\
+\hline
+Percepatan Sudut & 13 $\frac{pixel}{frame}$\\
+\hline
+Percepatan Jatuh & 10 $\frac{pixel}{frame}$\\
+\hline
+\end{tabular}
+\label{tab1}
+\end{center}
+\end{table}
+
+Berdasarkan hasil pengujian, didapatkan teknik deteksi jatuh berhasil. Hal ini dapat dilihat pada Fig 5 dan Fig 6. Pada saat objek manusia jatuh, percepatan sudut dan percepatan jatuh pada pusat massa akan memiliki nilai yang signifikan.
+
+\begin{figure}
+    \centerline{\includegraphics[width=0.5\textwidth]{figures/fall_detect1.png}}
+    \caption{Deteksi Jatuh pada sampel data 50 ways to fall.}
 \end{figure}
 
-\begin{figure}[htbp]
-    \centerline{\includegraphics[width=0.5\textwidth]{figures/accuracy.png}}
-    \caption{Grafik akurasi dari model CNN}
+\begin{figure}
+    \centerline{\includegraphics[width=0.5\textwidth]{figures/fall_detect2.png}}
+    \caption{Deteksi Jatuh pada sampel data sekuens gambar dari Multiple Cameras Fall Dataset.}
 \end{figure}
-
-Grafik \textit{loss} menunjukan bahwa model CNN yang diusulkan memiliki \textit{loss} yang semakin menurun seiring dengan bertambahnya epoch walaupun terjadi fluktuasi yang signifikan pada awal. Hal tersebut menunjukkan bahwa model CNN yang diusulkan semakin baik dalam melakukan klasifikasi gambar X-ray paru-paru.
-
-Grafik akurasi menunjukkan bahwa model CNN yang diusulkan memiliki akurasi yang semakin meningkat seiring dengan bertambahnya epoch. Hal tersebut menunjukkan bahwa model CNN yang diusulkan semakin baik dalam melakukan klasifikasi gambar X-ray paru-paru.
-
-Dari hasil pelatihan model CNN, didapatkan akurasi sebesar 94\% dan \textit{loss} sebesar 23\%. Hasil tersebut menunjukkan bahwa model CNN yang diusulkan memiliki performa yang baik dalam melakukan klasifikasi gambar.
 
 \section{Conclusion}
-Pada penelitian ini, model Convolutional Neural Network (CNN) terbukti dapat melakukan klasifikasi Covid-19 berdasarkan gambar X-ray paru-paru. Model CNN yang diusulkan memiliki akurasi sebesar 94\% dan \textit{loss} sebesar 23\%. Hasil tersebut menunjukkan bahwa model CNN yang diusulkan memiliki performa yang baik dalam melakukan klasifikasi gambar X-ray paru-paru. 
+Dalam penelitian ini, disajikan hasil bahwa penggabungan antara metode pose estimation dan tracking menggunakan model MoveNet memiliki kemampuan untuk mendeteksi kejadian jatuh pada berbagai skenario dengan akurasi yang memadai dan menggunakan biaya komputasi yang relatif murah.
 
-Untuk penelitian selanjutnya, dapat dilakukan penelitian dengan menggunakan dataset yang lebih besar dan beragam. Selain itu, dapat dilakukan penelitian dengan melakukan pengolahan citra seperti \textit{histogram equalization} beserta metode \textit{preprocessing} lainnya pada dataset. Untuk menghasilkan akurasi yang lebih tinggi, dapat dilakukan penelitian dengan menggunakan model CNN yang lebih kompleks seperti ResNet, DenseNet, dan EfficientNet. Dapat juga dilakukan penelitian dengan menggunakan \textit{transfer learning} untuk meningkatkan akurasi dari model CNN yang diusulkan.
+Percobaan dan pengujian yang dilakukan berjumlah relatif sedikit, sehingga hasil yang didapatkan belum tentu dapat mewakili hasil yang akan didapatkan pada pengujian yang lebih luas. Faktor penentu jatuh yang dipakai pada penelitian ini hanya terdapat dua sehingga hasil yang didapatkan belum tentu dapat mewakili hasil yang akan didapatkan pada kasus yang lebih kompleks.
 
-\section{Additional Information}
-File \textit{Google Colab} atau \textit{Jupyter Notebook} dapat diakses pada tautan berikut: \url{https://colab.research.google.com/drive/1dv7vCyRvFQis5hKDv8Sr2cJx3V8V1lo5}
+Dalam penelitian ini, digunakan model MoveNet versi \textit{lightning} yang memiliki akurasi yang lebih rendah dibandingkan dengan versi \textit{thunder}. Oleh karena itu, untuk penelitian yang akan datang, akan digunakan model MoveNet versi \textit{thunder} untuk melihat perbedaan akurasi yang didapatkan.
+
+Metode tracking yang digunakan pada penelitian ini relatif membutuhkan komputasi yang kompleks, sehingga untuk penelitian yang akan datang, akan digunakan metode tracking yang lebih ringan seperti \textit{median flow} atau \textit{kernelized correlation filter}.
+
+\section{Attachments}
+File \textit{Google Colab} dapat diakses pada tautan berikut: \url{https://colab.research.google.com/drive/1SlQyLhmec8QbJ2V5TxQLD3WDPg5NqwdV}.
+
+File \textit{Jupyter Notebook} dapat di akses dan download pada tautan berikut: \url{https://drive.google.com/file/d/1SlQyLhmec8QbJ2V5TxQLD3WDPg5NqwdV/view?usp=share_link}.
 
 \begin{thebibliography}{00}
 \bibitem{b1} D. Ros and R. Dai, "A Flexible Fall Detection Framework Based on Object Detection and Motion Analysis," 2023 International Conference on Artificial Intelligence in Information and Communication (ICAIIC), Bali,Indonesia, 2023, pp. 063-068, doi: 10.1109/ICAIIC57133.2023.10066990.
 \bibitem{b2} M. Andriluka et al., "Movenet: A Deep Learning Framework for Human Pose Estimation," in arXiv preprint arXiv:2103.11653 [cs.CV], Mar. 2021.
+\bibitem{dataset1} “Multiple cameras fall dataset.” http://www.iro.umontreal.ca/~labimage/Dataset/ (accessed May 09, 2023).
+\bibitem{dataset2} Kevin Parry. "50 Ways to Fall," YouTube, Oct. 18. 2018 [Video file]. Available: https://www.youtube.com/watch?v=8Rhimam6FgQ\&t=1s. [Accessed: May 9, 2023].
 \bibitem{adachi2007fall} S. Adachi, Y. Abe, and M. Yachida, “Fall detection based on floor vibration measurement using a low-cost acceleration sensor,” in Proceedings of the 29th Annual International Conference of the IEEE Engineering in Medicine and Biology Society, 2007, pp. 2497–2500.
 \bibitem{han2019review} Y. Han, H. Yoo, and D. Park, "A review on deep learning techniques for the recognition of human actions," International Journal of Control and Automation, vol. 12, no. 3, pp. 41-50, 2019.
+\bibitem{liu2018fall} Liu, T., Yuan, Z., \& Jin, L. (2018). A Fall Detection System Based on Deep Learning. IEEE Access, 6, 85482-85490. doi: 10.1109/ACCESS.2018.2887874
 
 \end{thebibliography}
 
